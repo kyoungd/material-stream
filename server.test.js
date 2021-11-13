@@ -2,6 +2,7 @@ const request = require('supertest');
 const redis = require('redis');
 const { app } = require('./server');
 const symbol = "TEST1"
+require('dotenv').config();
 
 describe('Todo', () => {
     let client;

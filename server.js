@@ -13,6 +13,8 @@ const moment = require('moment');
 
 const formatMessage = require("./utils/messages");
 const _ = require('underscore');
+require('dotenv').config();
+
 const {
   userJoin,
   getCurrentUser,
