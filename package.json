@@ -1,11 +1,12 @@
 {
-  "name": "NODEJS-socket_io_realtime_chat_room",
+  "name": "NODEJSsocketiorealtimechatroom",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "NODE_ENV=test jest --watchAll --unhandled-rejections=strict --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/infiniteoo/NODEJS-socket_io_realtime_chat_room#readme",
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "express": "^4.17.1",

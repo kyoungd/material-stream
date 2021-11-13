@@ -32,6 +32,9 @@ const SCOREKEY = process.env.SCOREKEY || 'STUDYTHREEBARSCORE';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 const INTERVAL_MS = process.env.INTERVAL_MS || 5000
+const LIMIT_VOLUME = process.env.THREEBAR_LIMIT_VOLUME || 100
+const LIMIT_BAR_SCAN = process.env.THREEBAR_LIMIT_BAR_SCAN_VALID || 10
+const LIMIT_SCORE = process.env.THREEBAR_LIMIT_SCORE || 1
 
 // run when a client connects
 io.on("connection", (socket) => {
@@ -84,6 +87,53 @@ io.on("connection", (socket) => {
 });
 
 
+const barSize = (period) => {
+  switch (period) {
+    case "1Sec": return 1;
+    case "10Sec": return 10;
+    case "1Min": return 60;
+    case "2Min": return 120;
+    case "5Min": return 300;
+    case "30Min": return 1800;
+    default:
+      return 1;
+  }
+}
+
+const volumeSize = (period) => {
+  switch (period) {
+    case "1Sec": return 1 / 60.0;
+    case "10Sec": return 1 / 6.0;
+    case "1Min": return 1;
+    case "2Min": return 2;
+    case "5Min": return 5;
+    case "30Min": return 30;
+    default:
+      return 1;
+  }
+}
+
+const barCount = (period, tsBefore, tsNow) => {
+  const seconds = tsNow - tsBefore;
+  const bars = Math.ceil(seconds / barSize(period));
+  return bars;
+}
+
+const isConditionValidData = (data, volumeLimit, barCountLimit, scoreLimit) => {
+  const tsSecondsNow = Math.floor(new Date().getTime() / 1000);
+  const result = [];
+  for (let idx = 0; idx < data.length; ++idx) {
+    const item = data[idx];
+    const volume = item.data[0].v / volumeSize(item.period);
+    const bCount = barCount(item.period, item.timestamp, tsSecondsNow);
+    const score = item.point;
+    if (volume >= volumeLimit && bCount <= barCountLimit && score >= scoreLimit) {
+      result.push(item);
+    }
+  }
+  return result;
+}
+
 const getScores = (data) => {
   let scores = [];
   for (let item in data) {
@@ -105,7 +155,7 @@ const getScores = (data) => {
   // sort scores by Score in descending order
   scores = _.sortBy(scores, 'Score').reverse();
   msg = JSON.stringify(scores);
-  console.log(room);
+  // console.log(room);
   return scores;
 }
 
@@ -174,11 +224,16 @@ app.get('/data', function (req, res) {
     }
     results = results.filter(item => item.point > 0)
     results = _.sortBy(results, 'timestamp').reverse();
+    results = isConditionValidData(results, LIMIT_VOLUME, LIMIT_BAR_SCAN, LIMIT_SCORE);
     res.send(results);
   });
 })
 
-server.listen(PORT, HOST, () => console.log(`Server running on port: ${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+  server.listen(PORT, HOST, () => console.log(`Server running on port: ${PORT}`));
+}
+
+module.exports = { app, isConditionValidData }
 
 // kill server port
 // kill -9 $(lsof -t -i:3001)

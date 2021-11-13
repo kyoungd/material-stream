@@ -40,12 +40,64 @@ I said "how to criticize religion while maintaining Intellectual Honesty." If I 
 
 Talking to "angels" and "Gods" is not evidence enough of mental illness? Seriously?
 
-[
-{"KeyName":"STUDYTHREEBARSCORE","Symbol":"FFHL","Score":4,"Fluctuation":0,"KeyLevel":0,"MultiTimeFrame":0,"CandleStickPattern":0,"PriceAction":0,"FibonacciPattern":0,"RsiAction":0,"Ema50":0,"Vwap":0,"News":0,"Correlation":0,"WithTrend":0,"BreakoutMomentum":0,"FreshTrend":0,"Level2":0,"Total":0},
-{"KeyName":"STUDYTHREEBARSCORE","Symbol":"HTOO","Score":4,"Fluctuation":0,"KeyLevel":0,"MultiTimeFrame":0,"CandleStickPattern":0,"PriceAction":0,"FibonacciPattern":0,"RsiAction":0,"Ema50":0,"Vwap":0,"News":0,"Correlation":0,"WithTrend":0,"BreakoutMomentum":0,"FreshTrend":0,"Level2":0,"Total":0},
-{"KeyName":"STUDYTHREEBARSCORE","Symbol":"AKYA","Score":4,"Fluctuation":0,"KeyLevel":0,"MultiTimeFrame":0,"CandleStickPattern":0,"PriceAction":0,"FibonacciPattern":0,"RsiAction":0,"Ema50":0,"Vwap":0,"News":0,"Correlation":0,"WithTrend":0,"BreakoutMomentum":0,"FreshTrend":0,"Level2":0,"Total":0},
-{"KeyName":"STUDYTHREEBARSCORE","Symbol":"SQBG","Score":2,"Fluctuation":0,"KeyLevel":0,"MultiTimeFrame":0,"CandleStickPattern":0,"PriceAction":0,"FibonacciPattern":0,"RsiAction":0,"Ema50":0,"Vwap":0,"News":0,"Correlation":0,"WithTrend":0,"BreakoutMomentum":0,"FreshTrend":0,"Level2":0,"Total":0}
-]
+```json
+{
+  "type": "threebars",
+  "symbol": "FATBB",
+  "period": "2Min",
+  "indicator": "price",
+  "timestamp": 1636480560,
+  "point": 4,
+  "data": [
+    {
+      "t": 1636480560,
+      "c": 18.52,
+      "o": 18.8,
+      "h": 18.8,
+      "l": 18.5,
+      "v": 4183,
+      "date": "9:56:00 am",
+      "seconds": 397
+    },
+    {
+      "t": 1636480440,
+      "c": 18.76,
+      "o": 18.7,
+      "h": 18.8,
+      "l": 18.7,
+      "v": 1595,
+      "date": "9:54:00 am",
+      "seconds": 517
+    },
+    {
+      "t": 1636480200,
+      "c": 18.79,
+      "o": 18.6,
+      "h": 18.79,
+      "l": 18.3,
+      "v": 1460,
+      "date": "9:50:00 am",
+      "seconds": 757
+    },
+    {
+      "t": 1636480080,
+      "c": 18.4,
+      "o": 18.875,
+      "h": 19,
+      "l": 18.3,
+      "v": 5703,
+      "date": "9:48:00 am",
+      "seconds": 877
+    }
+  ],
+  "trade": {
+    "symbol": "FATBB",
+    "close": 18.62,
+    "volume": 9
+  },
+  "Score": 4
+}
+```
 
 HSET STUDYTHREEBARSCORE FFHL '{"KeyName":"STUDYTHREEBARSCORE","Symbol":"FFHL","Score":4,"Fluctuation":0,"KeyLevel":0,"MultiTimeFrame":0,"CandleStickPattern":0, "PriceAction":0,"FibonacciPattern":0,"RsiAction":0,"Ema50":0,"Vwap":0,"News":0,"Correlation":0,"WithTrend":0,"BreakoutMomentum":0,"FreshTrend":0,"Level2":0,"Total":0}'
 
