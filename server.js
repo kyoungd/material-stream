@@ -208,6 +208,10 @@ const cleanDatetime = (data) => {
   return datablock
 }
 
+app.get('/live/ping', function (req, res) {
+  res.send("pong");
+})
+
 app.get('/data', function (req, res) {
   room = 'STUDYTHREEBARSCORE';
   results = [];
