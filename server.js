@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const botName = "ChatCord Bot";
 const SCOREKEY = process.env.SCOREKEY || 'STUDYTHREEBARSCORE';
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const INTERVAL_MS = process.env.INTERVAL_MS || 5000
 const LIMIT_VOLUME = process.env.THREEBAR_LIMIT_VOLUME || 100
 const LIMIT_BAR_SCAN = process.env.THREEBAR_LIMIT_BAR_SCAN_VALID || 10
