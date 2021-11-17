@@ -1,8 +1,9 @@
 const express = require("express");
-const http = require("http");
+const http = require("https");
 // const socketio = require("socket.io")(server, { origins: '*:*' });
 const path = require("path");
 const timer = require('timers');
+const serverless = require('serverless-http');
 const app = express();
 const server = http.createServer(app);
 // const io = socketio(server);
@@ -24,7 +25,12 @@ const {
 } = require("./utils/users");
 
 const redis = require('redis');
-const client = redis.createClient();
+const { env } = require("process");
+const client = redis.createClient({
+  host: process.env.REDIS_HOST || '54.193.144.196',
+  port: process.env.REDIS_PORT || 6379,
+  password: process.env.REDIS_PASSWORD || '',
+});
 
 // set static folder
 app.use(express.static(path.join(__dirname, "public")));
@@ -239,7 +245,10 @@ if (process.env.NODE_ENV !== 'test') {
   server.listen(PORT, HOST, () => console.log(`Server running on port: ${PORT}`));
 }
 
-module.exports = { app, isConditionValidData }
+
+//module.exports = { app, isConditionValidData } // For local development
+
+module.exports.handler = serverless(app, isConditionValidData); // For production
 
 // kill server port
 // kill -9 $(lsof -t -i:3001)
