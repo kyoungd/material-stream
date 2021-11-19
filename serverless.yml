@@ -12,6 +12,7 @@ provider:
  timeout: 30 # optional, in seconds, default is 6
  stage: ${opt:stage}
  region: us-west-1
+ logRetentionInDays: ${self:custom.vars.logRetentionInDays, 1}
  environment:
     PORT: 3001
     SCOREKEY: "STUDYTHREEBARSCORE"
