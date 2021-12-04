@@ -246,9 +246,9 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 
-//module.exports = { app, isConditionValidData } // For local development
+module.exports = { app, isConditionValidData } // For local development
 
-module.exports.handler = serverless(app, isConditionValidData); // For production
+//module.exports.handler = serverless(app, isConditionValidData); // For production
 
 // kill server port
 // kill -9 $(lsof -t -i:3001)
