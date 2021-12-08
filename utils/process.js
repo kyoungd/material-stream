@@ -1,8 +1,9 @@
 const moment = require('moment');
-const SCOREKEY = process.env.SCOREKEY || 'STUDYTHREEBARSCORE';
-const LIMIT_VOLUME = process.env.THREEBAR_LIMIT_VOLUME || 100
-const LIMIT_BAR_SCAN = process.env.THREEBAR_LIMIT_BAR_SCAN_VALID || 10
-const LIMIT_SCORE = process.env.THREEBAR_LIMIT_SCORE || 1
+const { KEYWORD } = require('../constants');
+const SCOREKEY = KEYWORD.SCOREKEY
+const LIMIT_VOLUME = KEYWORD.THREEBAR_LIMIT_VOLUME;
+const LIMIT_BAR_SCAN = KEYWORD.THREEBAR_LIMIT_BAR_SCAN_VALID;
+const LIMIT_SCORE = KEYWORD.THREEBAR_LIMIT_SCORE;
 const _ = require('lodash');
 
 require('dotenv').config();
@@ -107,6 +108,15 @@ const ProcessIntervalData = (data) => {
     results = _.sortBy(results, 'timestamp').reverse();
     results = isConditionValidData(results, LIMIT_VOLUME, LIMIT_BAR_SCAN, LIMIT_SCORE);
     return results;
+}
+
+const AddProcessData = (data, news) => {
+    const datalist = [];
+    for (let ix = 0; ix < data.length; ++ix) {
+        item = data[ix];
+        item['sentiment'] = news.find(x => x.symobl === item.symobl).sentiment;
+        datalist.push(item);
+    }
 }
 
 module.exports = { ProcessIntervalData, isConditionValidData }

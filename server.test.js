@@ -5,6 +5,8 @@ const RedisHash = require('./redisHash');
 const symbol = "TEST1"
 require('dotenv').config();
 const { isConditionValidData } = require('./utils/process');
+const newsData = require('./sample-news-search.json');
+const { KEYWORD } = require('./constants');
 
 describe('to build', () => {
     let client;
@@ -49,7 +51,8 @@ describe('to build', () => {
             await hash.set("IBM", data);
             await hash.set("ABC", data);
             const result = await hash.getAll();
-            expect(result.length).toBe(2);
+            expect(result['IBM']).toBeDefined();
+            expect(result['ABC']).toBeDefined();
         }
         catch (err) {
             console.log(err);
@@ -120,13 +123,20 @@ describe('Todo', () => {
     })
 
     it('should app /data get', async () => {
+        const redisHash = new RedisHash(KEYWORD.NEWS_SEARCH);
+        Object.keys(newsData).forEach(async (field) => {
+            const value = newsData[field];
+            await redisHash.set(field, JSON.stringify(value));
+        });
         const response = await request(app).get('/data')
             .expect('Content-Type', /json/)
             .expect(200);
         const result = response.body;
-        expect(result[0].symbol).toEqual(data[0].symbol);
-        expect(result[0].data.length).toEqual(data[0].data.length);
-        expect(result.length).toEqual(data.length);
+        expect(result.threebar[0].symbol).toEqual(data[0].symbol);
+        expect(result.threebar[0].data.length).toEqual(data[0].data.length);
+        expect(result.threebar.length).toEqual(data.length);
+        expect(result.news).toBeDefined();
+        expect(result.news.NEWS_SEARCH_1_day_ago).toBeDefined();
     })
 
     it('should test isConditionValidData', () => {

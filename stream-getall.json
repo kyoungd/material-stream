@@ -1,0 +1,420 @@
+{
+    "threebar": [
+        {
+            "type": "threebars",
+            "symbol": "FANG",
+            "period": "2Min",
+            "indicator": "price",
+            "timestamp": 1637695471,
+            "point": 4,
+            "data": [
+                {
+                    "t": 1637695471,
+                    "c": 10.399999999999999,
+                    "o": 10.6,
+                    "h": 10.8,
+                    "l": 10.25,
+                    "v": 3000,
+                    "date": "11:24:31 am",
+                    "seconds": 0
+                },
+                {
+                    "t": 1637695351,
+                    "c": 10.7,
+                    "o": 10.6,
+                    "h": 10.8,
+                    "l": 10.55,
+                    "v": 3000,
+                    "date": "11:22:31 am",
+                    "seconds": 120
+                },
+                {
+                    "t": 1637695231,
+                    "c": 10.7,
+                    "o": 10.1,
+                    "h": 10.8,
+                    "l": 10.05,
+                    "v": 3000,
+                    "date": "11:20:31 am",
+                    "seconds": 240
+                },
+                {
+                    "t": 1637695111,
+                    "c": 10.2,
+                    "o": 10.299999999999999,
+                    "h": 10.5,
+                    "l": 10.05,
+                    "v": 3000,
+                    "date": "11:18:31 am",
+                    "seconds": 360
+                },
+                {
+                    "t": 1637694991,
+                    "c": 10.399999999999999,
+                    "o": 10.6,
+                    "h": 10.8,
+                    "l": 10.25,
+                    "v": 3000,
+                    "date": "11:16:31 am",
+                    "seconds": 480
+                },
+                {
+                    "t": 1637694871,
+                    "c": 10.7,
+                    "o": 10.6,
+                    "h": 10.8,
+                    "l": 10.55,
+                    "v": 3000,
+                    "date": "11:14:31 am",
+                    "seconds": 600
+                },
+                {
+                    "t": 1637694751,
+                    "c": 10.7,
+                    "o": 10.1,
+                    "h": 10.8,
+                    "l": 10.05,
+                    "v": 3000,
+                    "date": "11:12:31 am",
+                    "seconds": 720
+                },
+                {
+                    "t": 1637694631,
+                    "c": 10.2,
+                    "o": 10.1,
+                    "h": 10.3,
+                    "l": 10.05,
+                    "v": 2000,
+                    "date": "11:10:31 am",
+                    "seconds": 840
+                }
+            ],
+            "trade": {
+                "symbol": "FANG",
+                "close": 10.45,
+                "volume": 100
+            },
+            "Score": 4
+        }
+    ],
+    "news": {
+        "NEWS_SEARCH_30_minute_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        },
+        "NEWS_SEARCH_1_day_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        },
+        "NEWS_SEARCH_2_hour_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        },
+        "NEWS_SEARCH_3_day_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        },
+        "NEWS_SEARCH_1_hour_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        },
+        "NEWS_SEARCH_4_hour_ago": {
+            "yahoo": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "twitter": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ],
+            "google": [
+                {
+                    "symbol": "TSLA",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "AAPL",
+                    "sentiment": 40,
+                    "count": 3
+                },
+                {
+                    "symbol": "GOOG",
+                    "sentiment": 40,
+                    "count": 3
+                }
+            ]
+        }
+    }
+}

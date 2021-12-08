@@ -100,11 +100,13 @@ const interval = setInterval(() => {
   // console.log('all rooms: ', allRooms);
   allRooms.forEach((room) => {
     const key = room.replace('SCORE', 'STACK');
-    client.hgetall(key, function (err, stack) {
-      client.hgetall(room, function (err, data) {
+    client.hgetall(key, async function (err, stack) {
+      client.hgetall(room, async function (err, data) {
         const results = ProcessIntervalData(data);
-        const news = hash.getAll();
-        msg = JSON.stringify({ 'threebar': results, news });
+        const symbolList = results.map(item => item.symbol);
+        const news = await hash.getAll();
+        const newsList = newsLayout(news, symbolList);
+        msg = JSON.stringify({ 'threebar': results, news: newsList });
         console.log(room);
         // console.log(new Date().toLocaleString());
         io.to(room).emit("message", formatMessage(botName, msg));
@@ -117,14 +119,35 @@ app.get('/live/ping', function (req, res) {
   res.send("pong");
 })
 
-app.get('/data', function (req, res) {
+const newsLayout = (news, symbolList) => {
+  const keys = Object.keys(news);
+  const symbols = news[keys[0]].map(item => item.symbol);
+  const newsList = [];
+  for (const symbol of symbols) {
+    // item in array
+    if (symbolList.indexOf(symbol) >= 0) {
+      const newsItems = [];
+      for (const key of keys) {
+        const newsItem = news[key].find(item => item.symbol === symbol);
+        newsItems.push({ 'timeframe': key, ...newsItem });
+      }
+      newsList.push({ symbol, "news": newsItems });
+    }
+  }
+  return newsList;
+}
+
+app.get('/data', async function (req, res) {
   room = 'STUDYTHREEBARSCORE';
   const hash = new RedisHash(KEYWORD.NEWS_SEARCH);
   // results = [];
-  client.hgetall(room, function (err, data) {
+  client.hgetall(room, async function (err, data) {
     const results = ProcessIntervalData(data);
-    const news = hash.getAll();
-    res.send({ 'threebar': results, news });
+    const symbolList = results.map(item => item.symbol);
+    const news = await hash.getAll();
+    const newsList = newsLayout(news, symbolList);
+    const jsondata = { 'threebar': results, 'news': newsList }
+    res.send(jsondata);
   });
 })
 

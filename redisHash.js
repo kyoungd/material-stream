@@ -5,11 +5,22 @@ const { KEYWORD } = require('./constants');
 
 require('dotenv').config();
 
-const client = redis.createClient({
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
-    password: process.env.REDIS_PASSWORD
-});
+const client = (function () {
+    try {
+        const redisHost = process.env.REDIS_HOST;
+        const redisPort = process.env.REDIS_PORT;
+        const redisPassword = process.env.REDIS_PASSWORD;
+        return redis.createClient({
+            host: redisHost,
+            port: redisPort,
+            password: redisPassword
+        });
+    }
+    catch (err) {
+        console.log(err);
+        return null;
+    }
+})();
 
 class RedisHash {
     constructor(key) {
@@ -57,19 +68,27 @@ class RedisHash {
 
     async getAll() {
         return new Promise((resolve, reject) => {
-            this.client.hgetall(this.key, (err, res) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    const data = [];
-                    for (let key in res) {
-                        const jsonString = '{"' + key.toString() + '":' + res[key] + '}';
-                        const value = JSON.parse(jsonString);
-                        data.push(value);
+            try {
+                this.client.hgetall(this.key, (err, res) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        let hashValues = {}
+                        if (res === null)
+                            resolve({ 'yahoos': [], 'twitters': [], 'googles': [] });
+                        else {
+                            Object.keys(res).forEach(key => {
+                                hashValues[key] = JSON.parse(res[key]);
+                            });
+                            resolve(hashValues);
+                        }
                     }
-                    resolve(data);
-                }
-            });
+                });
+            }
+            catch (err) {
+                console.log(err);
+                reject([]);
+            }
         });
     }
 
@@ -99,13 +118,19 @@ class RedisHash {
 
     async getLength() {
         return new Promise((resolve, reject) => {
-            this.client.hlen(this.key, (err, res) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(res);
-                }
-            });
+            try {
+                this.client.hlen(this.key, (err, res) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(res);
+                    }
+                });
+            }
+            catch (err) {
+                console.log(err);
+                reject(0);
+            }
         });
     }
 
