@@ -3,7 +3,7 @@ const http = require("https");
 // const socketio = require("socket.io")(server, { origins: '*:*' });
 const path = require("path");
 const timer = require('timers');
-const serverless = require('serverless-http');
+///////const serverless = require('serverless-http');
 const app = express();
 const server = http.createServer(app);
 // const io = socketio(server);
@@ -37,8 +37,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const botName = "ChatCord Bot";
 const SCOREKEY = process.env.SCOREKEY || 'STUDYTHREEBARSCORE';
-const HOST = process.env.HOST || '0.0.0.0';
-const PORT = process.env.PORT || 3003;
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || 3001;
 const INTERVAL_MS = process.env.INTERVAL_MS || 5000
 const LIMIT_VOLUME = process.env.THREEBAR_LIMIT_VOLUME || 100
 const LIMIT_BAR_SCAN = process.env.THREEBAR_LIMIT_BAR_SCAN_VALID || 10
