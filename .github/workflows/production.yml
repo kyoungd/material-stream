@@ -8,13 +8,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
     - name: Deploy in EC2
+    
+    - uses: actions/checkout@v2
+      with:
+        version: 12.x
 
     - name: Install dependencies
       run: |
