@@ -1,4 +1,4 @@
-name: Stream App Deployment
+name: Deployment
 
 on:
   push:
@@ -7,12 +7,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
 
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy in EC2
-    
+
     - uses: actions/setup-node@v1.1.0
       with:
         version: 12.x
@@ -20,13 +18,13 @@ jobs:
     - name: Install dependencies
       run: |
         composer install -o
-        npm
+        yarn
     - name: Build
-      run: npm build
+      run: yarn build
       
     - name: Sync
       env:
-        dest: 'ubuntu@3.101.55.110:/home/material-server'
+        dest: 'ubuntu@3.101.55.110:/home/material-stream'
       run: |
         echo "${{secrets.AWS_PRIVATE_KEY}}" > deploy_key
         chmod 600 ./deploy_key
@@ -35,5 +33,6 @@ jobs:
         git fetch --all &&
         git reset --hard origin/main &&
         git pull origin main &&
+        pm2 stop 0
         npm install
         pm2 restart 0
