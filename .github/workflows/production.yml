@@ -21,8 +21,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }} and deploy material-stream build
       uses: actions/setup-node@v2
+      env:
+            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOSTNAME : ${{ secrets.HOSTNAME  }}
+            USER_NAME : ${{ secrets.USER_NAME  }}
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -32,15 +36,16 @@ jobs:
     # Install dependencies
     - name: Install node dependencies
       run: |
-        npm install
-        npm install -g serverless
-        npm install -g serverless-offline
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: eu-west-1
-    - name: deploy
-      run: serverless deploy --stage prod  
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          
+          #Now we have got the access of EC2 and we will start the deploy .
+          cd /home/material-stream &&
+          git checkout main &&
+          git fetch --all &&
+          git reset --hard origin/main &&
+          git pull origin main &&
+          pm2 stop 0
+          npm install
+          pm2 restart 0
 
