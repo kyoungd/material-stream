@@ -30,9 +30,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-    #- run: npm run build --if-present
-    - run: |
+        
+  Deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy in EC2
+        run: |
+          npm install
           echo "${{secrets.AWS_PRIVATE_KEY}}" > deploy_key
           chmod 600 ./deploy_key
           cd /home/material-stream &&
