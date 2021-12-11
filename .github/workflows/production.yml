@@ -1,43 +1,37 @@
-name: CI/CD stream app.
+name: Stream App Deployment
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-#First we will see the application build or not , then we will deploy in EC2
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [12.22]
-    
+
     steps:
     - uses: actions/checkout@v2
 
-  Deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2 
-      - name: Deploy in EC2
-        env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOSTNAME : ${{ secrets.HOSTNAME  }}
-            USER_NAME : ${{ secrets.USER_NAME  }}
-            
-        run: |
-          echo "$PRIVATE_KEY" > deploy_key && chmod 600 deploy_key
-          ssh -o StrictHostKeyChecking=no -i deploy_key ${USER_NAME}@${HOSTNAME} '
-          
-            #Now we have got the access of EC2 and we will start the deploy .
-            cd /home/material-stream &&
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard origin/main &&
-            git pull origin main &&
-            npm install
-            pm2 restart 0
-          '
+    - uses: actions/setup-node@v1.1.0
+      with:
+        version: 12.x
+
+    - name: Install dependencies
+      run: |
+        composer install -o
+        npm
+    - name: Build
+      run: npm build
+      
+    - name: Sync
+      env:
+        dest: 'ubuntu@3.101.55.110:/home/material-server'
+      run: |
+        echo "${{secrets.AWS_PRIVATE_KEY}}" > deploy_key
+        chmod 600 ./deploy_key
+        cd /home/material-stream &&
+        git checkout main &&
+        git fetch --all &&
+        git reset --hard origin/main &&
+        git pull origin main &&
+        npm install
+        pm2 restart 0
