@@ -29,8 +29,8 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: |
-          echo "$PRIVATE_KEY" > key && chmod 700 key
-          ssh -o StrictHostKeyChecking=no -i key ${USER_NAME}@${HOSTNAME} '
+          echo "$PRIVATE_KEY" > deploy_key && chmod 600 deploy_key
+          ssh -o StrictHostKeyChecking=no -i deploy_key ${USER_NAME}@${HOSTNAME} '
           
             #Now we have got the access of EC2 and we will start the deploy .
             cd /home/material-stream &&
