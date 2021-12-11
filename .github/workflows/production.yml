@@ -29,7 +29,7 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: |
-          echo "$PRIVATE_KEY" > services-instance-key
+          echo "$PRIVATE_KEY" > services-instance-key && chmod 600 services-instance-key
           ssh -o StrictHostKeyChecking=no -i services-instance-key ${USER_NAME}@${HOSTNAME} '
           
             #Now we have got the access of EC2 and we will start the deploy .
