@@ -34,8 +34,8 @@ jobs:
     # Install dependencies
     - name: Install node dependencies
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+        echo "$PRIVATE_KEY" > services-instance-key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i services-instance-key ${USER_NAME}@${HOSTNAME}
           
           #Now we have got the access of EC2 and we will start the deploy.
           cd /home/material-stream &&
