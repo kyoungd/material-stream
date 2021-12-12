@@ -1,4 +1,4 @@
-name: CI/CD stream app.
+name: CI/CD stream app
 
 on:
   push:
