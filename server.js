@@ -242,7 +242,7 @@ app.get('/data', function (req, res) {
 })
 
 if (process.env.NODE_ENV !== 'test') {
-  server.listen(PORT, HOST, () => console.log(`Stream server running on port ....: ${PORT}`));
+  server.listen(PORT, HOST, () => console.log(`Stream server running on port : ${PORT}`));
 }
 
 
