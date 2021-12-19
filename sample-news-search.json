@@ -1,0 +1,320 @@
+{
+    "NEWS_SEARCH_1_day_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    },
+    "NEWS_SEARCH_1_hour_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    },
+    "NEWS_SEARCH_2_hour_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    },
+    "NEWS_SEARCH_30_minute_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    },
+    "NEWS_SEARCH_3_day_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    },
+    "NEWS_SEARCH_4_hour_ago": {
+        "yahoo": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "twitter": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ],
+        "google": [
+            {
+                "symbol": "TSLA",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "AAPL",
+                "sentiment": 40,
+                "count": 3
+            },
+            {
+                "symbol": "GOOG",
+                "sentiment": 40,
+                "count": 3
+            }
+        ]
+    }
+}
