@@ -38,6 +38,7 @@ const {
 // set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
+
 const botName = "ChatCord Bot";
 const HOST = KEYWORD.HOST;
 const PORT = KEYWORD.PORT;
@@ -94,26 +95,26 @@ io.on("connection", (socket) => {
 });
 
 
-const interval = setInterval(() => {
-  const hash = new RedisHash(KEYWORD.NEWS_SEARCH);
-  const allRooms = getAllUniqueRooms();
-  // console.log('all rooms: ', allRooms);
-  allRooms.forEach((room) => {
-    const key = room.replace('SCORE', 'STACK');
-    client.hgetall(key, async function (err, stack) {
-      client.hgetall(room, async function (err, data) {
-        const results = ProcessIntervalData(data);
-        const symbolList = results.map(item => item.symbol);
-        const news = await hash.getAll();
-        const newsList = newsLayout(news, symbolList);
-        msg = JSON.stringify({ 'threebar': results, news: newsList });
-        console.log(room);
-        // console.log(new Date().toLocaleString());
-        io.to(room).emit("message", formatMessage(botName, msg));
-      });
-    });
-  });
-}, INTERVAL_MS);
+// const interval = setInterval(() => {
+//   const hash = new RedisHash(KEYWORD.NEWS_SEARCH);
+//   const allRooms = getAllUniqueRooms();
+//   // console.log('all rooms: ', allRooms);
+//   allRooms.forEach((room) => {
+//     const key = room.replace('SCORE', 'STACK');
+//     client.hgetall(key, async function (err, stack) {
+//       client.hgetall(room, async function (err, data) {
+//         const results = ProcessIntervalData(data);
+//         const symbolList = results.map(item => item.symbol);
+//         const news = await hash.getAll();
+//         const newsList = newsLayout(news, symbolList);
+//         msg = JSON.stringify({ 'threebar': results, news: newsList });
+//         console.log(room);
+//         // console.log(new Date().toLocaleString());
+//         io.to(room).emit("message", formatMessage(botName, msg));
+//       });
+//     });
+//   });
+// }, INTERVAL_MS);
 
 app.get('/live/ping', function (req, res) {
   res.send("pong");
@@ -148,6 +149,52 @@ app.get('/data', async function (req, res) {
     const newsList = newsLayout(news, symbolList);
     const jsondata = { 'threebar': results, 'news': newsList }
     res.send(jsondata);
+  });
+})
+
+app.get('/stack', async function (req, res) {
+  room = 'STUDYTHREEBARSTACK';
+  const hash = new RedisHash(KEYWORD.NEWS_SEARCH);
+  // results = [];
+  client.hgetall(room, async function (err, data) {
+    const itemList = [];
+    Object.keys(data).forEach(key => {
+      item = JSON.parse(data[key]);
+      item.map(one => {
+        two = {};
+        two.type = one.type;
+        two.symbol = one.symbol + ' (' + one.period + ')';
+        two.datetime = moment(one.action.timestamp).format('HH:mm:ss');
+        two.closes = '$' + one.data[0].c.toString();
+        two.closes += ', $' + one.data[1].c.toString();
+        two.closes += ', $' + one.data[2].c.toString();
+        two.closes += ', $' + one.data[3].c.toString();
+        itemList.push(two);
+      });
+    });
+    res.send(itemList);
+  });
+})
+
+app.get('/score', async function (req, res) {
+  room = 'STUDYTHREEBARSCORE';
+  const hash = new RedisHash(KEYWORD.NEWS_SEARCH);
+  // results = [];
+  client.hgetall(room, async function (err, data) {
+    const itemList = [];
+    Object.keys(data).forEach(key => {
+      item = JSON.parse(data[key]);
+      item.map(one => {
+        two = {}
+        two.type = one.type;
+        two.symbol = one.symbol + ' (' + one.period + ')';
+        two.data = '$' + one.trade.close.toString() + ' (' + one.trade.volume.toString() + ')';
+        two.score = one.score;
+        two.datetime = moment(one.timestamp).format('HH:mm:ss');
+        itemList.push(two);
+      });
+    });
+    res.send(itemList);
   });
 })
 
