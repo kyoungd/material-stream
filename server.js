@@ -4,6 +4,7 @@ const http = require("http");
 const path = require("path");
 const timer = require('timers');
 const RedisHash = require('./redisHash');
+
 const app = express();
 const server = http.createServer(app);
 // const io = socketio(server);
@@ -199,7 +200,7 @@ app.get('/score', async function (req, res) {
 })
 
 if (process.env.NODE_ENV !== 'test') {
-  server.listen(PORT, HOST, () => console.log(`Server running on port: ${PORT}`));
+  server.listen(PORT, HOST, () => console.log(`Stream server running on port : ${PORT}`));
 }
 
 module.exports = { app }
